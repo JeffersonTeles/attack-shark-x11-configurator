@@ -259,15 +259,6 @@ Se o aplicativo só funcionar com `sudo`, isso é esperado na configuração atu
 
 A documentação do pywebview informa que, no Linux, é necessário usar explicitamente um backend como Qt ou GTK. Se o backend padrão não funcionar, ajuste a instalação conforme o ambiente da sua distribuição. [web:45][web:48]
 
-## Desenvolvimento
-
-Para atualizar o projeto no GitHub depois de fazer mudanças:
-
-```bash
-git add .
-git commit -m "Descreva sua alteração"
-git push
-```
 
 ## Observações
 
