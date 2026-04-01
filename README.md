@@ -275,7 +275,3 @@ git push
 - Os caminhos definidos em `app.py` podem precisar ser ajustados para cada máquina.
 - Atualmente o fluxo usa `sudo` para conseguir acessar o dispositivo.
 - A Attack Shark também mantém uma página oficial de downloads de drivers, firmware, software e manuais para seus dispositivos. [web:52][web:58]
-
-## Licença
-
-Adicione aqui a licença que você quiser usar no projeto, como por exemplo MIT.
