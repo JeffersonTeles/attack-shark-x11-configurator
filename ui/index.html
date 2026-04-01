@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Attack Shark X11</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-icon">🖱️</div>
+  <div>
+    <div class="header-title">Attack Shark X11</div>
+    <div class="header-sub">Mouse via adaptador</div>
+  </div>
+  <div class="bat-badge" id="bat-badge">
+    <span>🔋</span><span id="bat-pct">...</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" data-tab="principal">⚡ Principal</div>
+  <div class="tab" data-tab="iluminacao">💡 Iluminação</div>
+  <div class="tab" data-tab="energia">🔋 Energia</div>
+  <div class="tab" data-tab="perfis">💾 Perfis</div>
+</div>
+
+<!-- PRINCIPAL -->
+<div class="content" id="tab-principal">
+  <div class="profiles">
+    <div class="profile-btn active" data-profile="jogos"><div class="p-icon">🎮</div><div class="p-label">Jogos</div></div>
+    <div class="profile-btn" data-profile="trabalho"><div class="p-icon">💼</div><div class="p-label">Trabalho</div></div>
+    <div class="profile-btn" data-profile="custom"><div class="p-icon">⚙️</div><div class="p-label">Custom</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🎯 DPI — 6 Estágios</div>
+    <div id="dpi-list"></div>
+    <div class="stage-row">
+      <div class="stage-label">Ativo:</div>
+      <div id="stage-btns" class="stage-btns"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚡ Polling Rate</div>
+    <div class="rate-row">
+      <div class="rate-btn" data-val="powerSaving"><div class="rate-hz">125Hz</div><div class="rate-name">Economia</div></div>
+      <div class="rate-btn" data-val="office"><div class="rate-hz">250Hz</div><div class="rate-name">Escritório</div></div>
+      <div class="rate-btn" data-val="gaming"><div class="rate-hz">500Hz</div><div class="rate-name">Gaming</div></div>
+      <div class="rate-btn active" data-val="eSports"><div class="rate-hz">1000Hz</div><div class="rate-name">eSports</div></div>
+    </div>
+  </div>
+
+  <div class="apply-row">
+    <div class="apply-btn" id="btn-apply">✅ Aplicar Configurações</div>
+    <div class="reset-btn" id="btn-reset">🔄 Reset</div>
+  </div>
+  <div class="status-msg" id="status-main"></div>
+</div>
+
+<!-- ILUMINAÇÃO -->
+<div class="content hidden" id="tab-iluminacao">
+  <div class="card">
+    <div class="card-title">💡 Modo de Iluminação</div>
+    <div class="light-grid">
+      <div class="light-btn active" data-val="Neon">🌈 Neon</div>
+      <div class="light-btn" data-val="Static">💡 Estático</div>
+      <div class="light-btn" data-val="Breathing">🌬️ Respiração</div>
+      <div class="light-btn" data-val="ColorBreathing">🎨 Color Breathing</div>
+      <div class="light-btn" data-val="StaticDpi">🎯 Static DPI</div>
+      <div class="light-btn" data-val="BreathingDpi">🎯 Breathing DPI</div>
+      <div class="light-btn" data-val="Off" style="grid-column:span 2">🌑 Desligado</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🎨 Cor RGB</div>
+    <div class="rgb-row">
+      <input type="color" id="color-picker" value="#ffffff">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="rgb-preview" id="rgb-preview" style="background:#ffffff"></div>
+        <div>
+          <div id="rgb-label" style="font-size:13px;font-weight:600;color:var(--text)">RGB: 255, 255, 255</div>
+          <div style="font-size:11px;color:var(--subtle);margin-top:3px">Clique para escolher</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🚀 Velocidade do LED</div>
+    <div class="speed-row">
+      <div class="speed-btn" data-val="1"><div class="speed-num">1</div><div class="speed-name">Lenta</div></div>
+      <div class="speed-btn" data-val="2"><div class="speed-num">2</div></div>
+      <div class="speed-btn active" data-val="3"><div class="speed-num">3</div><div class="speed-name">Média</div></div>
+      <div class="speed-btn" data-val="4"><div class="speed-num">4</div></div>
+      <div class="speed-btn" data-val="5"><div class="speed-num">5</div><div class="speed-name">Rápida</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ENERGIA -->
+<div class="content hidden" id="tab-energia">
+  <div class="card">
+    <div class="card-title">⏱️ Sleep</div>
+    <div class="slider-row">
+      <div class="slider-label">Sleep (min)</div>
+      <input type="range" id="sleep-slider" min="0.5" max="30" step="0.5" value="5">
+      <div class="slider-val" id="sleep-val">5</div>
+    </div>
+    <div class="slider-row" style="margin-top:12px">
+      <div class="slider-label">Deep Sleep (min)</div>
+      <input type="range" id="deep-slider" min="1" max="60" step="1" value="10">
+      <div class="slider-val" id="deep-val">10</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">⌨️ Resposta dos Botões</div>
+    <div class="slider-row">
+      <div class="slider-label">Tempo (ms)</div>
+      <input type="range" id="key-slider" min="4" max="50" step="2" value="4">
+      <div class="slider-val" id="key-val">4</div>
+    </div>
+    <div class="hint-text">⚡ Menor = mais rápido &nbsp;|&nbsp; 🛡️ Maior = menos duplo clique acidental</div>
+  </div>
+</div>
+
+<!-- PERFIS -->
+<div class="content hidden" id="tab-perfis">
+  <div class="card">
+    <div class="card-title">💾 Perfis Salvos</div>
+    <div id="profiles-list"><div style="color:var(--subtle);font-size:13px">Carregando...</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">➕ Salvar Perfil Atual</div>
+    <div class="save-row">
+      <input type="text" id="profile-name" placeholder="Nome do perfil..." class="text-input">
+      <div class="save-btn" id="btn-save-profile">💾 Salvar</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">⚡ Perfis Rápidos</div>
+    <div class="preset-row">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--text)">🎮 Jogos</div>
+        <div style="font-size:11px;color:var(--subtle);margin-top:2px">1000Hz · DPI até 22000 · Neon</div>
+      </div>
+      <div class="mini-btn" id="preset-games">▶ Carregar</div>
+    </div>
+    <div class="preset-row" style="margin-top:10px">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--text)">💼 Trabalho</div>
+        <div style="font-size:11px;color:var(--subtle);margin-top:2px">250Hz · DPI até 3200 · LED off</div>
+      </div>
+      <div class="mini-btn" id="preset-work">▶ Carregar</div>
+    </div>
+  </div>
+  <div class="status-msg" id="status-profiles"></div>
+</div>
+
+<!-- DPI POPUP -->
+<div class="dpi-popup hidden" id="dpi-popup">
+  <div class="dpi-popup-label" id="dpi-popup-label">Estágio 1</div>
+  <input type="range" id="dpi-popup-slider" min="100" max="22000" step="100">
+  <div class="dpi-popup-val" id="dpi-popup-val">800</div>
+  <div class="dpi-popup-close" id="dpi-popup-close">Fechar</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
