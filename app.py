@@ -12,7 +12,7 @@ UI_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ui')
 
 def run_ts(path):
     result = subprocess.run(
-        ['sudo', BUN, path],
+        ['pkexec', BUN, path],
         capture_output=True,
         text=True,
         timeout=25
@@ -78,7 +78,7 @@ class Api:
     def get_battery(self):
         try:
             result = subprocess.run(
-                ['sudo', BUN, BASE + '/battery.ts'],
+                ['pkexec', BUN, BASE + '/battery.ts'],
                 capture_output=True,
                 text=True,
                 timeout=15
